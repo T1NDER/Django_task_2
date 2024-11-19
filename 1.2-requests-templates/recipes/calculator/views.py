@@ -28,3 +28,11 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def calculator_recipes(requests, recipes_name):
+    recipe = DATA.get(recipes_name)
+    if recipe:
+        context = {'recipe': recipe}
+        return render(requests, 'calculator/index.html', context)
+    else:
+        return render(requests, 'calculator/error.html', {'error_message': 'Recipe is not found'})
